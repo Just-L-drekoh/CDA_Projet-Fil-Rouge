@@ -21,53 +21,98 @@
       </thead>
 
       <tbody>
+        {# authentification #}
         <tr>
-          <td>Id_Client</td>
-          <td>Id</td>
+          <td>authentification_Id</td>
+          <td>auth_Id</td>
           <td>Primary Key(Id)</td>
           <td>INT</td>
-          <td>Client</td>
+          <td>authentification</td>
         </tr>
         <tr>
-          <td>Firstname_Client</td>
-          <td>cli_Firstname</td>
-          <td>Firstname of the client</td>
+          <td>authentification_email</td>
+          <td>auth_email</td>
+          <td>Email of the authentification</td>
           <td>VARCHAR(255)</td>
-          <td>Client</td>
+          <td>authentification</td>
         </tr>
         <tr>
-          <td>Lastname_Client</td>
-          <td>cli_Lastname</td>
-          <td>Lastname of the client</td>
+          <td>authentification_password</td>
+          <td>auth_pswd</td>
+          <td>Password of the authentification(hash)</td>
           <td>VARCHAR(255)</td>
-          <td>Client</td>
+          <td>authentification</td>
         </tr>
         <tr>
-          <td>Email_Client</td>
-          <td>cli_email</td>
-          <td>email of the client</td>
+          <td>authentification_role</td>
+          <td>auth_role</td>
+          <td>Role of the authentification</td>
+          <td>VARCHAR(20)</td>
+          <td>authentification</td>
+        </tr>
+        <tr>
+          <td>foreign_key</td>
+          <td>pers_Id</td>
+          <td>Foreign key of the person</td>
+          <td>INT</td>
+          <td>Person(pers_Id)</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+        {# Person #}
+        <tr>
+          <td>Id_Person</td>
+          <td>pers_Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Person</td>
+        </tr>
+        <tr>
+          <td>Firstname_Person</td>
+          <td>pers_Firstname</td>
+          <td>Firstname of the person</td>
           <td>VARCHAR(255)</td>
-          <td>Client</td>
+          <td>Person</td>
         </tr>
         <tr>
-          <td>Password_Client</td>
-          <td>cli_password</td>
-          <td>password of the client</td>
+          <td>Lastname_Person</td>
+          <td>pers_Lastname</td>
+          <td>Lastname of the person</td>
           <td>VARCHAR(255)</td>
-          <td>Client</td>
+          <td>Person</td>
         </tr>
         <tr>
-          <td>Phone_Client</td>
-          <td>cli_phone</td>
-          <td>phone of the client</td>
+          <td>Email_Person</td>
+          <td>pers_email</td>
+          <td>email of the person</td>
+          <td>VARCHAR(255)</td>
+          <td>Person</td>
+        </tr>
+        <tr>
+          <td>Phone_Person</td>
+          <td>pers_phone</td>
+          <td>phone of the person</td>
           <td>VARCHAR(30)</td>
-          <td>Client</td>
+          <td>Person</td>
         </tr>
         <tr>
-          <td>Siret_Client</td>
-          <td>cli_Siret</td>
-          <td>Siret of the client</td>
-          <td>VARCHAR(50)</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+        {# client #}
+        <tr>
+          <td>Id_Client</td>
+          <td>cli_Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
           <td>Client</td>
         </tr>
         <tr>
@@ -85,6 +130,13 @@
           <td>Client</td>
         </tr>
         <tr>
+          <td>Siret_Client</td>
+          <td>cli_Siret</td>
+          <td>Siret of the client</td>
+          <td>VARCHAR(50)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
           <td>reference_Client</td>
           <td>cli_reference</td>
           <td>reference of the client</td>
@@ -92,34 +144,90 @@
           <td>Client</td>
         </tr>
         <tr>
+          <td>foreign_key</td>
+          <td>pers_Id</td>
+          <td>Foreign key of the person</td>
+          <td>INT</td>
+          <td>Person(pers_Id)</td>
+        </tr>
+        <tr>
           <td>------</td>
           <td>------</td>
           <td>------</td>
           <td>------</td>
           <td>------</td>
         </tr>
+        {# Supplier #}
         <tr>
           <td>Id_Supplier</td>
-          <td>spl_id</td>
+          <td>spl_Id</td>
           <td>Primary Key(Id)</td>
           <td>INT</td>
           <td>Supplier</td>
         </tr>
         <tr>
-          <td>Firstname_Supplier</td>
-          <td>spl_firstname</td>
-          <td>Firstname of the supplier</td>
-          <td>VARCHAR(255)</td>
+          <td>Siret_Supplier</td>
+          <td>spl_Siret</td>
+          <td>Siret of the supplier</td>
+          <td>VARCHAR(50)</td>
+          <td>Supplier</td>
+        </tr>
+         <tr>
+          <td>Status_Supplier</td>
+          <td>spl_status</td>
+          <td>Status of the supplier(active or not)</td>
+          <td>BOOL</td>
           <td>Supplier</td>
         </tr>
         <tr>
-          <td>Lastname_Supplier</td>
-          <td>spl_lastname</td>
-          <td>Lastname of the supplier</td>
-          <td>VARCHAR(255)</td>
+          <td>importator_Supplier</td>
+          <td>spl_importator</td>
+          <td>importator of the supplier</td>
+          <td>BOOL</td>
           <td>Supplier</td>
+           <tr>
+          <td>Contructor_Supplier</td>
+          <td>spl_constructor</td>
+          <td>constructor of the supplier</td>
+          <td>BOOL</td>
+          <td>Supplier</td>
+        <tr>
+          <td>foreign_key_person</td>
+          <td>pers_Id</td>
+          <td>foreign key of the person</td>
+          <td>INT</td>
+          <td>Person(pers_Id)</td>
+        </tr>
+        </tr>
+      </tr>
+      <td>------</td>
+      <td>------</td>
+      <td>------</td>
+      <td>------</td>
+      <td>------</td>
+    </tr>
+    {# commercial #}
+        <tr>
+          <td>commercial_Id</td>
+          <td>com_Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Commercial</td>
         </tr>
         <tr>
+          <td>commercial_status</td>
+          <td>com_status</td>
+          <td>Status of the commercial</td>
+          <td>BOOL</td>
+          <td>Commercial</td>
+        </tr>
+        <tr>
+          <td>foreign_key</td>
+          <td>pers_Id</td>
+          <td>Foreign key of the person</td>
+          <td>INT</td>
+          <td>Person(pers_Id)</td>
+        </tr>
           <td>------</td>
           <td>------</td>
           <td>------</td>
