@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionnaire de données</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <h1 id="titre">Dictionnaire de données</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nom Conceptuel</th>
+          <th>Code</th>
+          <th>Descriptif</th>
+          <th>Type,longueur</th>
+          <th>Table</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Id_Client</td>
+          <td>Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Firstname_Client</td>
+          <td>cli_Firstname</td>
+          <td>Firstname of the client</td>
+          <td>VARCHAR(255)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Lastname_Client</td>
+          <td>cli_Lastname</td>
+          <td>Lastname of the client</td>
+          <td>VARCHAR(255)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Email_Client</td>
+          <td>cli_email</td>
+          <td>email of the client</td>
+          <td>VARCHAR(255)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Password_Client</td>
+          <td>cli_password</td>
+          <td>password of the client</td>
+          <td>VARCHAR(255)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Phone_Client</td>
+          <td>cli_phone</td>
+          <td>phone of the client</td>
+          <td>VARCHAR(30)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>Siret_Client</td>
+          <td>cli_Siret</td>
+          <td>Siret of the client</td>
+          <td>VARCHAR(50)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>individual_Client</td>
+          <td>cli_individual</td>
+          <td>Is the client an individual</td>
+          <td>BOOL</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>professional_Client</td>
+          <td>cli_professional</td>
+          <td>Is the client an professional</td>
+          <td>BOOL</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>reference_Client</td>
+          <td>cli_reference</td>
+          <td>reference of the client</td>
+          <td>VARCHATR(50)</td>
+          <td>Client</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+        <tr>
+          <td>Id_Supplier</td>
+          <td>spl_id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Supplier</td>
+        </tr>
+        <tr>
+          <td>Firstname_Supplier</td>
+          <td>spl_firstname</td>
+          <td>Firstname of the supplier</td>
+          <td>VARCHAR(255)</td>
+          <td>Supplier</td>
+        </tr>
+        <tr>
+          <td>Lastname_Supplier</td>
+          <td>spl_lastname</td>
+          <td>Lastname of the supplier</td>
+          <td>VARCHAR(255)</td>
+          <td>Supplier</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+        <tr>
+          <td>Id_Address</td>
+          <td>adr_id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Address</td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>adr_address</td>
+          <td>Postal Address, street, hamlet, etc...</td>
+          <td>VARCHAR(255)</td>
+          <td>Address</td>
+        </tr>
+        <tr>
+          <td>Postal Code</td>
+          <td>adr_cp</td>
+          <td>Postal code</td>
+          <td>VARCHAR(5)</td>
+          <td>Address</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
