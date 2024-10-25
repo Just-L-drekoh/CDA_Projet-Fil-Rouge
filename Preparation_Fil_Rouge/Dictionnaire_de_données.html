@@ -234,11 +234,20 @@
           <td>------</td>
           <td>------</td>
         </tr>
+
+        {# Address #}
         <tr>
           <td>Id_Address</td>
           <td>adr_id</td>
           <td>Primary Key(Id)</td>
           <td>INT</td>
+          <td>Address</td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td>adr_city</td>
+          <td>City</td>
+          <td>VARCHAR(50)</td>
           <td>Address</td>
         </tr>
         <tr>
@@ -262,6 +271,168 @@
           <td>------</td>
           <td>------</td>
         </tr>
+
+        {# rubric #}
+        <tr>
+          <td>Id_rubric</td>
+          <td>rub_Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>rubric</td>
+        </tr>
+        <tr>
+          <td>Label_rubric</td>
+          <td>rub_label</td>
+          <td>Label of the rubric</td>
+          <td>VARCHAR(100)</td>
+          <td>rubric</td>
+        </tr>
+        <tr>
+          <td>description_rubric</td>
+          <td>rub_desc</td>
+          <td>Description of the rubric</td>
+          <td>TEXT</td>
+          <td>rubric</td>
+        </tr>
+        <tr>
+          <td>Foreign_key</td>
+          <td>rub_id_parent</td>
+          <td>Foreign key of the parent</td>
+          <td>INT</td>
+          <td>Rubric(rub_Id)</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+        </tr>
+        <tr>
+          <td>Id Product</td>
+          <td>prod_Id</td>
+          <td>Primary Key(Id)</td>
+          <td>INT</td>
+          <td>Product</td>
+        </tr>
+        <tr>
+          <td>Label Product</td>
+          <td>prod_label</td>
+          <td>Label of the product(short)</td>
+          <td>VARCHAR(50)</td>
+          <td>Product</td>
+        </tr>
+        <tr>
+          <td>Description Product</td>
+          <td>prod_desc</td>
+          <td>Label of the product(long)</td>
+          <td>VARCHAR(255)</td>
+          <td>Product</td>
+        </tr>
+        <tr>
+          <td>Price Product</td>
+          <td>prod_price</td>
+          <td>Price of the product</td>
+          <td>DECIMAL(7,2)</td>
+          <td>Product</td>
+        </tr>
+        <tr>
+          <td>image Product</td>
+          <td>prod_img</td>
+          <td>Image of the product</td>
+          <td>VARCHAR(255)</td>
+          <td>Product</td>
+        </tr>
+        <tr>
+          <td>Foreign_key</td>
+          <td>rub_id</td>
+          <td>Foreign key of the rubric(under rub)</td>
+          <td>INT</td>
+          <td>rubric(rub_Id)</td>
+        </tr>
+        <td>Foreign_key</td>
+        <td>pers_id</td>
+        <td>Foreign key of the person</td>
+        <td>INT</td>
+        <td>Person(pers_Id)</td>
+      </tr>
+      <tr>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+      </tr>
+      <tr>
+        <td>Id Order</td>
+        <td>ord_Id</td>
+        <td>Primary Key(Id)</td>
+        <td>INT</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>Partial Order</td>
+        <td>ord_partial</td>
+        <td>Partial of the order</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>shipped Order</td>
+        <td>ord_shipped</td>
+        <td>Shipped of the order is full</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>Date payment Order</td>
+        <td>ord_dt_pay</td>
+        <td>Date payement of the order</td>
+        <td>DATE</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>Date shipped Order</td>
+        <td>ord_dt_shipped</td>
+        <td>Date shipped of the order</td>
+        <td>DATE</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>transfer Order</td>
+        <td>ord_transfer</td>
+        <td>Transfer of the order</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>check Order</td>
+        <td>ord_check</td>
+        <td>Check payment of the order</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>valide Order</td>
+        <td>ord_valide</td>
+        <td>Valide of the order(shopping)</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>archive Order</td>
+        <td>ord_arch</td>
+        <td>Archive of the order(3years)</td>
+        <td>BOOL</td>
+        <td>Order</td>
+      </tr>
+      <tr>
+        <td>Foreign_key</td>
+        <td>pers_Id</td>
+        <td>Foreign key of the person</td>
+        <td>INT</td>
+        <td>Person(pers_Id)</td>
+      </tr>
       </tbody>
     </table>
   </body>
