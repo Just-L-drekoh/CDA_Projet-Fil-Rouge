@@ -107,41 +107,41 @@
           <td>------</td>
           <td>------</td>
         </tr>
-        {# client #}
+        {# customer #}
         <tr>
-          <td>Id_Client</td>
+          <td>Id_customer</td>
           <td>cli_Id</td>
           <td>Primary Key(Id)</td>
           <td>INT</td>
-          <td>Client</td>
+          <td>customer</td>
         </tr>
         <tr>
-          <td>individual_Client</td>
+          <td>individual_customer</td>
           <td>cli_individual</td>
-          <td>Is the client an individual</td>
+          <td>Is the customer an individual</td>
           <td>BOOL</td>
-          <td>Client</td>
+          <td>customer</td>
         </tr>
         <tr>
-          <td>professional_Client</td>
+          <td>professional_customer</td>
           <td>cli_professional</td>
-          <td>Is the client an professional</td>
+          <td>Is the customer an professional</td>
           <td>BOOL</td>
-          <td>Client</td>
+          <td>customer</td>
         </tr>
         <tr>
-          <td>Siret_Client</td>
+          <td>Siret_customer</td>
           <td>cli_Siret</td>
-          <td>Siret of the client</td>
-          <td>VARCHAR(50)</td>
-          <td>Client</td>
+          <td>Siret of the customer</td>
+          <td>VARCHAR(20)</td>
+          <td>customer</td>
         </tr>
         <tr>
-          <td>reference_Client</td>
+          <td>reference_customer</td>
           <td>cli_reference</td>
-          <td>reference of the client</td>
+          <td>reference of the customer</td>
           <td>VARCHATR(50)</td>
-          <td>Client</td>
+          <td>customer</td>
         </tr>
         <tr>
           <td>foreign_key</td>
@@ -288,6 +288,13 @@
           <td>rubric</td>
         </tr>
         <tr>
+          <td>Slug_rubric</td>
+          <td>rub_slug</td>
+          <td>slug of the rubric</td>
+          <td>VARCHAR(100)</td>
+          <td>rubric</td>
+        </tr>
+        <tr>
           <td>description_rubric</td>
           <td>rub_desc</td>
           <td>Description of the rubric</td>
@@ -319,7 +326,7 @@
           <td>Label Product</td>
           <td>prod_label</td>
           <td>Label of the product(short)</td>
-          <td>VARCHAR(50)</td>
+          <td>VARCHAR(100)</td>
           <td>Product</td>
         </tr>
         <tr>
@@ -363,6 +370,7 @@
         <td>------</td>
         <td>------</td>
       </tr>
+      {# Order #}
       <tr>
         <td>Id Order</td>
         <td>ord_Id</td>
@@ -432,6 +440,49 @@
         <td>Foreign key of the person</td>
         <td>INT</td>
         <td>Person(pers_Id)</td>
+      </tr>
+      <tr>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+        <td>------</td>
+      </tr>
+      {# Order Details #}
+      <tr>
+        <td>Id Detail</td>
+        <td>details_Id</td>
+        <td>Primary Key(Id)</td>
+        <td>INT</td>
+        <td>Order Details</td>
+      </tr>
+      <tr>
+        <td>Quantity Detail</td>
+        <td>details_qty</td>
+        <td>Quantity of the detail(product)</td>
+        <td>INT</td>
+        <td>Order Details</td>
+      </tr>
+      <tr>
+        <td>Price Detail</td>
+        <td>details_price</td>
+        <td>Price of the detail(product)</td>
+        <td>DECIMAL(10,2)</td>
+        <td>Order Details</td>
+      </tr>
+      <tr>
+        <td>Foreign_key</td>
+        <td>prod_Id</td>
+        <td>Foreign key of the product</td>
+        <td>INT NOT NULL</td>
+        <td>Product(prod_Id)</td>
+      </tr>
+      <tr>
+        <td>Foreign_key</td>
+        <td>ord_Id</td>
+        <td>Foreign key of the order</td>
+        <td>INT NOT NULL </td>
+        <td>Order(ord_Id)</td>
       </tr>
       </tbody>
     </table>
