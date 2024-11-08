@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      h2 {
+        color: #34495e;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background-color: #fff;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #3498db;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dictionnaire de données</h1>
+
+    <h2>Table RUBRIC (Rubriques)</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>rub_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de la rubrique</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>rub_label</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Libellé de la rubrique</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>rub_slug</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Slug URL de la rubrique</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>rub_desc</td>
+        <td>TEXT</td>
+        <td>-</td>
+        <td>Description de la rubrique</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>rub_id_rub_parent_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de la rubrique parente</td>
+        <td>NOT NULL, Clé étrangère vers rubric(rub_id)</td>
+      </tr>
+    </table>
+
+    <h2>Table SERVICE</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>serv_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique du service</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>serv_type</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Type de service</td>
+        <td>Valeurs: 'apres-vente', 'commercial', 'comptabilite', 'equipe'</td>
+      </tr>
+    </table>
+
+    <h2>Table UTILISATEUR</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de l'utilisateur</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>user_ref</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Référence unique de l'utilisateur</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>user_firstname</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Prénom de l'utilisateur</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>user_lastname</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Nom de l'utilisateur</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>user_phone</td>
+        <td>VARCHAR</td>
+        <td>20</td>
+        <td>Numéro de téléphone</td>
+        <td>NOT NULL , UNIQUE</td>
+      </tr>
+      <tr>
+        <td>user_email</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Adresse email</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>user_passwd</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Mot de passe</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>user_role</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Rôle de l'utilisateur</td>
+        <td>NOT NULL, Valeurs: 'admin', 'user'</td>
+      </tr>
+      <tr>
+        <td>coef</td>
+        <td>DECIMAL</td>
+        <td>(5,2)</td>
+        <td>Coefficient</td>
+        <td>NOT NULL, DEFAULT 0</td>
+      </tr>
+      <tr>
+        <td>user_type</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Type d'utilisateur</td>
+        <td>Valeurs: 'particulier', 'professionnel'</td>
+      </tr>
+      <tr>
+        <td>user_siret</td>
+        <td>VARCHAR</td>
+        <td>20</td>
+        <td>Numéro SIRET</td>
+        <td>UNIQUE</td>
+      </tr>
+      <tr>
+        <td>serv_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID du service</td>
+        <td>Clé étrangère vers service(serv_id)</td>
+      </tr>
+    </table>
+
+    <h2>Table ADDRESS</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>adr_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de l'adresse</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>adr_city</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Ville</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>adr_address</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Adresse</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>adr_type</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Type d'adresse</td>
+        <td>NOT NULL, Valeurs: 'livraison', 'facturation'</td>
+      </tr>
+      <tr>
+        <td>adr_cp</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Code postal</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>is_default</td>
+        <td>BOOLEAN</td>
+        <td>-</td>
+        <td>Adresse par défaut</td>
+        <td>DEFAULT false</td>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de l'utilisateur</td>
+        <td>NOT NULL, Clé étrangère vers utilisateur(user_id)</td>
+      </tr>
+    </table>
+
+    <h2>Table SUPPLIER_DETAILS</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>spl_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique du fournisseur</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>spl_siret</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Numéro SIRET du fournisseur</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>spl_type</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Type de fournisseur</td>
+        <td>NOT NULL, Valeurs: 'importateur', 'constructeur'</td>
+      </tr>
+      <tr>
+        <td>spl_status</td>
+        <td>BOOLEAN</td>
+        <td>-</td>
+        <td>Statut du fournisseur</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>spl_discount</td>
+        <td>DECIMAL</td>
+        <td>(5,2)</td>
+        <td>Remise fournisseur</td>
+        <td>DEFAULT 0</td>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de l'utilisateur</td>
+        <td>NOT NULL, Clé étrangère vers utilisateur(user_id)</td>
+      </tr>
+    </table>
+
+    <h2>Table PRODUCT</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>prod_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique du produit</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>prod_label</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Libellé du produit</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>prod_ref</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Référence du produit</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>prod_slug</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Slug URL du produit</td>
+        <td>NOT NULL, UNIQUE</td>
+      </tr>
+      <tr>
+        <td>prod_desc</td>
+        <td>TEXT</td>
+        <td>-</td>
+        <td>Description du produit</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>prod_price</td>
+        <td>DECIMAL</td>
+        <td>(15,2)</td>
+        <td>Prix du produit</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>prod_stock</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Stock disponible</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>spl_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID du fournisseur</td>
+        <td>NOT NULL, Clé étrangère vers supplier_details(spl_id)</td>
+      </tr>
+      <tr>
+        <td>rub_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de la rubrique</td>
+        <td>NOT NULL, Clé étrangère vers rubric(rub_id)</td>
+      </tr>
+    </table>
+
+    <h2>Table ORDER_HISTORY</h2>
+    <table>
+      <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+      </tr>
+      <tr>
+        <td>ord_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de la commande</td>
+        <td>Clé primaire, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>ord_ref</td>
+        <td>VARCHAR</td>
+        <td>50</td>
+        <td>Référence de la commande</td>
+        <td>NOT NULL , UNIQUE</td>
+      </tr>
+      <tr>
+        <td>ord_date</td>
+        <td>DATETIME</td>
+        <td>-</td>
+        <td>Date de la commande</td>
+        <td>NOT NULL</td>
+      </tr>
+      <tr>
+        <td>ord_status</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Statut de la commande</td>
+        <td>NOT NULL, Valeurs: 'en attente', 'expédiée', 'partiellement expédiée', 'livrée'</td>
+
+    </tr>
+    </tr>
+    <tr>
+        <td>payment_date</td>
+        <td>DATETIME</td>
+        <td>-</td>
+        <td>Date du paiement</td>
+        <td>NOT NULL</td>
+    </tr>
+    <tr>
+        <td>archive_doc</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Document d'archive</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>payment_method</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Méthode de paiement</td>
+        <td>NOT NULL, Valeurs: 'virement', 'chèque', 'carte bancaire'</td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>DECIMAL</td>
+        <td>(15,2)</td>
+        <td>Montant total</td>
+        <td>NOT NULL</td>
+    </tr>
+    <tr>
+        <td>invoice_date</td>
+        <td>DATETIME</td>
+        <td>-</td>
+        <td>Date de facturation</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>payment_status</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Statut du paiement</td>
+        <td>NOT NULL, Valeurs: 'en attente', 'validé', 'refusée'</td>
+    </tr>
+    <tr>
+        <td>archive_type</td>
+        <td>ENUM</td>
+        <td>-</td>
+        <td>Type d'archive</td>
+        <td>NOT NULL, Valeurs: 'facture', 'bon de livraison'</td>
+    </tr>
+    <tr>
+        <td>user_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de l'utilisateur</td>
+        <td>NOT NULL, Clé étrangère vers utilisateur(user_id)</td>
+    </tr>
+</table>
+
+<h2>Table DELIVERY</h2>
+<table>
+    <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+    </tr>
+    <tr>
+        <td>deliv_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de la livraison</td>
+        <td>Clé primaire, Auto-increment</td>
+    </tr>
+    <tr>
+        <td>deli_date</td>
+        <td>DATETIME</td>
+        <td>-</td>
+        <td>Date de livraison</td>
+        <td>NOT NULL</td>
+    </tr>
+    <tr>
+        <td>shipping_note</td>
+        <td>VARCHAR</td>
+        <td>100</td>
+        <td>Note de livraison</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>ord_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de la commande</td>
+        <td>NOT NULL, Clé étrangère vers order_history(ord_id)</td>
+    </tr>
+</table>
+
+<h2>Table IMAGE</h2>
+<table>
+    <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+    </tr>
+    <tr>
+        <td>img_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Identifiant unique de l'image</td>
+        <td>Clé primaire, Auto-increment</td>
+    </tr>
+    <tr>
+        <td>prod_img</td>
+        <td>VARCHAR</td>
+        <td>255</td>
+        <td>Chemin de l'image</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>prod_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID du produit</td>
+        <td>NOT NULL, Clé étrangère vers product(prod_id)</td>
+    </tr>
+</table>
+
+<h2>Table ORDERS_DETAILS</h2>
+<table>
+    <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+    </tr>
+    <tr>
+        <td>prod_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID du produit</td>
+        <td>Clé primaire, Clé étrangère vers product(prod_id)</td>
+    </tr>
+    <tr>
+        <td>ord_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de la commande</td>
+        <td>Clé primaire, Clé étrangère vers order_history(ord_id)</td>
+    </tr>
+    <tr>
+        <td>det_qty</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Quantité commandée</td>
+        <td>NOT NULL, CHECK (det_qty > 0)</td>
+    </tr>
+    <tr>
+        <td>det_price</td>
+        <td>DECIMAL</td>
+        <td>(15,2)</td>
+        <td>Prix unitaire</td>
+        <td>NOT NULL</td>
+    </tr>
+</table>
+
+<h2>Table DELIVERY_DETAILS</h2>
+<table>
+    <tr>
+        <th>Champ</th>
+        <th>Type</th>
+        <th>Taille</th>
+        <th>Description</th>
+        <th>Contraintes</th>
+    </tr>
+    <tr>
+        <td>prod_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID du produit</td>
+        <td>Clé primaire, Clé étrangère vers product(prod_id)</td>
+    </tr>
+    <tr>
+        <td>deliv_id</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>ID de la livraison</td>
+        <td>Clé primaire, Clé étrangère vers delivery(deliv_id)</td>
+    </tr>
+    <tr>
+        <td>shipped_qty</td>
+        <td>INT</td>
+        <td>-</td>
+        <td>Quantité livrée</td>
+        <td>NOT NULL, CHECK (shipped_qty >= 0)</td>
+    </tr>
+</table>
+</body>
+</html> 
