@@ -8,6 +8,7 @@
 /var/
 /vendor/
 /data
+./db_data
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
